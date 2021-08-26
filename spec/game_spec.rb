@@ -11,8 +11,8 @@ describe Game do
     expect(subject.hand).to eq "10"
   end
 
-  it 'retrieves the first player' do
-    expect(game.player_1). to eq player_1
+  it 'allows for two players' do
+    expect(subject.add_player.length).to eq 2
   end
 
 end

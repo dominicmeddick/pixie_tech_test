@@ -45,16 +45,16 @@ Build an application that:
 
 notes: A game is started and player is declared the winner
   
-2. Two player game winner with controlled score
+2. Two player game winner with random score
    - Game
    - Player
    - Hand
    - Hand.score (e.g 13)
    - Game.winning_hand
 
-notes: a game is started, 2 players are introduced, both players get a hand with a fixed score, player 1 is declared the winner. 
+notes: a game is started, 2 players are introduced, both players get a hand with a random score, the higher number is declared the winner. 
   
-3. Two player game winner with controlled single card score
+1. Two player game winner with controlled single card score
    - Game
    - Player
    - Card
