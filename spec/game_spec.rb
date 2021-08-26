@@ -12,7 +12,7 @@ describe Game do
   end
 
   it 'the a player can pick a card' do
-    expect(player_1.hand).to eq "10"
+    expect(subject.hand).to eq "10"
   end
 
 end
