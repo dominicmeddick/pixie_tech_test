@@ -52,7 +52,7 @@ notes: A game is started and player is declared the winner
    - Hand.score (e.g 13)
    - Game.winning_hand
 
-notes: a game is started, 2 players are introduced, both players get a hand with a random score, the higher number is declared the winner. 
+notes: a game is started, players are introduced, players get a hand with a random score, the higher number is declared the winner. 
   
 1. Two player game winner with controlled single card score
    - Game

@@ -8,7 +8,8 @@ describe Game do
   end
 
   it 'the a player can pick a card' do
-    expect(subject.hand).to eq "10"
+    allow(subject).to receive(hand).and_return(10)
+    expect(subject.hand).to eq 10
   end
 
   it 'allows user to add players to the game' do
