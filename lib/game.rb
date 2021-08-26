@@ -11,7 +11,7 @@ class Game
 
   # gives a player a hand/card. Will push out into seperate class as program grows
   def hand
-    "10"
+    rand(1..13)
   end
 
   # this method will contain the logic for declaring a winner
