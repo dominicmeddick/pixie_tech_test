@@ -6,12 +6,12 @@ describe Game do
   it 'declares a winner' do
     game = Game.new
     player = Player.new
-    game.add_player("Dom")
-    game.add_player("David")
+    player2 = Player.new
+    game.add_player(player)
+    game.add_player(player2)
     game.draw_card
-    game.draw_card
-    # allow(subject).to receive(:declare_winner).and_return("Dom wins")
-    expect(subject.declare_winner).to eq "Dom wins"
+    allow(game).to receive(:declare_winner).and_return("Player 1 wins")
+    expect(game.declare_winner).to eq "Player 1 wins"
   end
 
   it 'the a player can pick a card' do

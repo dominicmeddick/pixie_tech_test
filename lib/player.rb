@@ -1,9 +1,8 @@
 class Player
 
-  attr_accessor :hand, :playername
+  attr_accessor :hand
 
   def initialize
-    @playername = []
     @hand = []
   end
 
