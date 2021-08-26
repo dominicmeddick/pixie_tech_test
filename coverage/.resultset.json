@@ -1,7 +1,35 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/dominicmeddick/Documents/Projects/pixie_tech_test/spec/game_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/dominicmeddick/Documents/Projects/pixie_tech_test/lib/game.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          null
+        ]
+      }
     },
-    "timestamp": 1629907693
+    "timestamp": 1629962728
   }
 }
