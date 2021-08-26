@@ -4,8 +4,17 @@
       "/Users/dominicmeddick/Documents/Projects/pixie_tech_test/spec/game_spec.rb": {
         "lines": [
           1,
+          1,
           null,
           1,
+          null,
+          2,
+          3,
+          2,
+          null,
+          1,
+          1,
+          null,
           null,
           1,
           1,
@@ -18,14 +27,28 @@
         "lines": [
           1,
           null,
+          null,
           1,
-          1,
+          0,
           null,
           null,
           null
         ]
+      },
+      "/Users/dominicmeddick/Documents/Projects/pixie_tech_test/lib/player.rb": {
+        "lines": [
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/dominicmeddick/Documents/Projects/pixie_tech_test/spec/player_spec.rb": {
+        "lines": [
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1629963024
+    "timestamp": 1629972671
   }
 }
