@@ -1,7 +1,7 @@
 class Game
 
-  def initialize(player_1, player_2)
-    @players = [player_1, player_2]
+  def initialize
+    @players = []
   end
 
   #gives a player a hand/card. Will push out into seperate class as program grows
