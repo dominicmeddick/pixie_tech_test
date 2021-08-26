@@ -4,7 +4,14 @@ require 'player'
 describe Game do 
 
   it 'declares a winner' do
-    expect(subject.declare_winner).to eq "Player wins"
+    game = Game.new
+    player = Player.new
+    game.add_player("Dom")
+    game.add_player("David")
+    game.draw_card
+    game.draw_card
+    # allow(subject).to receive(:declare_winner).and_return("Dom wins")
+    expect(subject.declare_winner).to eq "Dom wins"
   end
 
   it 'the a player can pick a card' do

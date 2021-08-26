@@ -15,6 +15,6 @@ class Game
 
   # this method will contain the logic for declaring a winner
   def declare_winner
-    "Player wins"
+    @players[0].hand > @player[1].hand ? "Dom wins" : "David wins"
   end
 end
