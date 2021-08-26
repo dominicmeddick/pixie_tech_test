@@ -4,6 +4,10 @@ class Game
     @players = []
   end
 
+  def add_player(player)
+    @players << player
+  end
+
 
   # gives a player a hand/card. Will push out into seperate class as program grows
   def hand

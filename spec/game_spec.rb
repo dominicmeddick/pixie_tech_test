@@ -11,8 +11,9 @@ describe Game do
     expect(subject.hand).to eq "10"
   end
 
-  it 'allows for two players' do
-    expect(subject.add_player.length).to eq 2
+  it 'allows user to add players to the game' do
+    player = Player.new
+    expect(subject.add_player(player)).to eq [player]
   end
 
 end
