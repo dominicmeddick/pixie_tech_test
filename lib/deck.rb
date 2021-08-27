@@ -2,12 +2,25 @@ require_relative 'card'
 
 class Deck
 
+  attr_accessor :SUITS
+
+  @@SUITS = [:spades, :hearts, :diamonds, :clubs]
+
   def initialize
-    @cards = [Card.new(5, :spades), Card.new(3, :spades)].shuffle
+    @cards = @@SUITS.map { |suit| build(suit) }.flatten
   end
 
+  # can only call the length method on an array not an object. This methods allows to check the length of my cards array.
   def length
     return @cards.length
+  end
+
+  def shuffle
+    @cards.shuffle!
+  end
+
+  def suits
+    return @@SUITS
   end
 
   #this takes the card from the top of the shuffled deck
@@ -17,6 +30,12 @@ class Deck
 
   def shallow_copy_cards
     @cards.dup
+  end
+
+  private
+
+  def build(suit)
+    (1..13).map { |value| Card.new(value, suit) }
   end
 
 end
