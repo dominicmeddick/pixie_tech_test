@@ -22,13 +22,14 @@
         "lines": [
           null,
           null,
-          1,
           null,
           1,
           null,
           1,
+          null,
           1,
-          1,
+          2,
+          2,
           null,
           null,
           null
@@ -40,11 +41,18 @@
           null,
           1,
           null,
+          1,
+          1,
+          1,
+          null,
+          null,
           null
         ]
       },
       "/Users/dominicmeddick/Documents/Projects/pixie_tech_test/lib/deck.rb": {
         "lines": [
+          1,
+          null,
           1,
           null,
           null
@@ -136,6 +144,6 @@
         ]
       }
     },
-    "timestamp": 1630059938
+    "timestamp": 1630060789
   }
 }
