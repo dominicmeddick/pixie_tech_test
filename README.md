@@ -45,24 +45,23 @@ Build an application that:
 
 notes: A game is started and player is declared the winner
   
-2. Two player game winner with random score
+2. Two player game winner with fixed score
    - Game
    - Player
    - Hand
    - Hand.score (e.g 13)
    - Game.winning_hand
 
-notes: a game is started, players are introduced, players get a hand with a random score, the higher number is declared the winner. 
+notes: a game is started, players are introduced, players get a hand with a fixed score, the higher number is declared the winner. 
   
-1. Two player game winner with controlled single card score
+3. Two player game winner with controlled single card score
    - Game
    - Player
    - Card
    - Hand.score --> Card
    - Game.winning_hand
 
-notes: a game is started, 2 players are introduced, a card object is created, the hand pulls from the card object, caluculates the score and then player 1 is declared the winner. It's possible that the logic that was previously put in the Hand object will need to move
-to the Card Object. For now that card objects main responsibility will be to have a single card. The hand will pull from that single card (array?). 
+notes: a game is started, player objects are created, the player object gets iterated and pulls the hand array, caluculates the score and then the player with the highest score is declared the winner. 
   
 4. Two player game winner with controlled deck with a single card score
    - Game

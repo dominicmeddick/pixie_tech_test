@@ -17,4 +17,4 @@ class Game
   def declare_winner
     @players[0].hand[0] > @players[1].hand[0] ? "Player 1 wins" : "Player 2 wins"
   end
-end
+end 
