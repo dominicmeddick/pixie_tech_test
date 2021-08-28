@@ -2,12 +2,14 @@ require_relative 'deck'
 
 class Hand
 
+  attr_reader :cards
+
   def initialize
     @cards = []
   end
 
-  def take_card(deck)
-    @cards << deck.draw
+  def take_card(card)
+    @cards << card
   end
 
   def hand_size
