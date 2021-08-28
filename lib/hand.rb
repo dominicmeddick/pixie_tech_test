@@ -12,10 +12,6 @@ class Hand
     @cards << card
   end
 
-  def hand_size
-    @cards.length
-  end
-
   def total_score
     total = 0
     for card in @cards do
@@ -23,5 +19,4 @@ class Hand
     end 
     return total
   end
-
 end

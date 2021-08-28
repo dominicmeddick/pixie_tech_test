@@ -22,5 +22,4 @@ describe Hand do
     expect(hand.total_score).to eq 16
 
   end
-
 end
