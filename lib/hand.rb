@@ -16,4 +16,12 @@ class Hand
     @cards.length
   end
 
+  def total_score
+    total = 0
+    for card in @cards do
+      total += card.value
+    end 
+    return total
+  end
+
 end
