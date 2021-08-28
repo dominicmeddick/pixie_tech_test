@@ -1,9 +1,11 @@
+require_relative 'hand'
+
 class Player
 
   attr_accessor :name
 
-  def initialize
-    @name = []
+  def initialize(name)
+    @name = name
     @hand = Hand.new
   end
 

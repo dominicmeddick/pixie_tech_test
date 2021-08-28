@@ -1,7 +1,9 @@
+require_relative 'player'
+
 class Game
 
   def initialize
-    @players = []
+    @players = Player.new
   end
 
   def add_player(player)
