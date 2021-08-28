@@ -8,6 +8,13 @@ describe Card do
     expect(card.suit).to eq :spades
   end
 
+  it 'checks the real value of a card' do 
+    card = Card.new(:ace, :hearts)
+    expect(card.real_value).to eq 1
+  end
+
+  it ' '
+
 end
 
 

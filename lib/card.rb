@@ -7,7 +7,7 @@ class Card
   include Comparable
 
   REAL_VALUE = {
-    1 => :ace, 
+    :ace => 1, 
     2 => 2, 
     3 => 3, 
     4 => 4, 
@@ -17,9 +17,9 @@ class Card
     8 => 8, 
     9 => 9, 
     10 => 10, 
-    11 => :jack, 
-    12 => :queen, 
-    13 => :king 
+    :jack => 11, 
+    :queen => 12, 
+    :king => 13 
   }
 
   def initialize(value, suit)
@@ -32,7 +32,7 @@ class Card
   end
 
   def to_s
-    "the {real_value} of #{@suit}"
+    "the #{real_value} of #{@suit}"
   end
 
   def <=>(other)

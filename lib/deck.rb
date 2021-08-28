@@ -10,11 +10,6 @@ class Deck
     @cards = @@SUITS.map { |suit| build(suit) }.flatten
   end
 
-  # can only call the length method on an array not an object. This methods allows to check the length of my cards array.
-  def length
-    return @cards.length
-  end
-
   def shuffle
     @cards.shuffle!
   end
@@ -37,5 +32,4 @@ class Deck
   def build(suit)
     (1..13).map { |value| Card.new(value, suit) }
   end
-
 end

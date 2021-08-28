@@ -22,4 +22,12 @@ describe Deck do
     shuffled_deck = deck.shuffle
     expect(shuffled_deck).not_to eq ordered_cards
   end
+
+  #test is failing. The expect contains incorrect logic
+  it 'takes a card from the top of the shuffled deck' do
+    deck = Deck.new
+    card = Card.new(4, suit)
+    shuffled_deck = deck.shuffle
+    expect(shuffled_deck.draw.value).to eq card.value
+  end
 end
