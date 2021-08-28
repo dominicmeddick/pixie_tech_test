@@ -31,10 +31,12 @@ class Card
     REAL_VALUE[value]
   end
 
+  # this method is potentially not needed
   def to_s
     "the #{value} of #{@suit}"
   end
 
+  # this method is potentially not needed
   def <=>(other)
     value <=> other.value
   end

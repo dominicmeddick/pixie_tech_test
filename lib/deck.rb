@@ -18,13 +18,17 @@ class Deck
     return @@SUITS
   end
 
-  #this takes the card from the top of the shuffled deck
+  #this takes the card from the top of a deck
   def draw
     @cards.pop
   end
 
   def shallow_copy_cards
     @cards.dup
+  end
+
+  def length
+    @cards.length
   end
 
   private

@@ -14,6 +14,7 @@ describe Deck do
         card_index += 1
       end
     end
+    expect(deck.length).to eq 52
   end
 
   it 'checks that cards are shuffled' do
@@ -23,11 +24,11 @@ describe Deck do
     expect(shuffled_deck).not_to eq ordered_cards
   end
 
-  #test is failing. The expect contains incorrect logic
-  it 'takes a card from the top of the shuffled deck' do
+  it 'takes a card from the top of the deck' do
     deck = Deck.new
-    card = Card.new(4, suit)
-    shuffled_deck = deck.shuffle
-    expect(shuffled_deck.draw.value).to eq card.value
+    deck_length = deck.length
+    expect(deck.draw).not_to equal nil
+    expect(deck.length).to eq (deck_length -1)
   end
+
 end
