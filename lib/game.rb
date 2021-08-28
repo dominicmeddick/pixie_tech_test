@@ -14,7 +14,7 @@ class Game
   end
   
   def number_of_cards(number)
-    return number
+    number
   end
 
   # # gives a player a hand/card. Will push out into seperate class as program grows
