@@ -3,16 +3,16 @@ require 'player'
 
 describe Game do 
 
-  it 'declares a winner' do
-    game = Game.new
-    player = Player.new
-    player2 = Player.new
-    game.add_player(player)
-    game.add_player(player2)
-    game.draw_card
-    allow(game).to receive(:declare_winner).and_return("Player 1 wins")
-    expect(game.declare_winner).to eq "Player 1 wins"
-  end
+  # it 'declares a winner' do
+  #   game = Game.new
+  #   player = Player.new
+  #   player2 = Player.new
+  #   game.add_player(player)
+  #   game.add_player(player2)
+  #   game.draw_card
+  #   allow(game).to receive(:declare_winner).and_return("Player 1 wins")
+  #   expect(game.declare_winner).to eq "Player 1 wins"
+  # end
 
   it 'the a player can pick a card' do
     allow(subject).to receive(:draw_card).and_return(10)

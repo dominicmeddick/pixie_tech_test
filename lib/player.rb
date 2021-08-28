@@ -3,7 +3,8 @@ class Player
   attr_accessor :hand
 
   def initialize
-    @hand = []
+    @name = []
+    @hand = Hand.new
   end
 
 end
