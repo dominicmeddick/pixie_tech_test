@@ -15,8 +15,6 @@ describe Game do
   it 'decides how many cards to deal' do
     game = Game.new
     number = 5
-    expect(game.number_of_cards(number)).to eq 5
+    expect(game.set_number_of_cards(number)).to eq 5
   end
-
-
 end

@@ -2,7 +2,7 @@ require_relative 'hand'
 
 class Player
 
-  attr_accessor :name
+  attr_accessor :name, :hand
 
   def initialize(name)
     @name = name

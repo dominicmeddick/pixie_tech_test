@@ -1,6 +1,5 @@
 require_relative 'player'
 
-
 class Game
 
   attr_accessor :players
@@ -9,21 +8,31 @@ class Game
     @players = []
   end
 
-  def add_player(player)
-    @players << player
+  def add_player(name)
+    if @players.length < 52
+      @players << Player.new(name)
+    else
+      puts "You can't add anymore players"
   end
   
-  def number_of_cards(number)
-    number
+  def set_number_of_cards(number)
+    @deck = Deck.new
+    if @deck.length / @players.length >= 1
+      @amount_of_cards = number
+    else
+      puts "Not enough cards in the deck!"
   end
 
-  # # gives a player a hand/card. Will push out into seperate class as program grows
-  # def draw_card
-  #   @players.each { |player| player.hand << rand(1..13) }
-  # end
+  def play
+    @deck.shuffle
 
-  # # this method will contain the logic for declaring a winner
-  # def declare_winner
-  #   @players[0].hand[0] > @players[1].hand[0] ? "Player 1 wins" : "Player 2 wins"
-  # end
-end 
+    for player in @players do
+      @amount_of_cards.times { player.hand.take_card(deck.draw) }
+    end
+
+    descending_sort = ->(a,b) { b.hand.total_score  <=> a.hand.total_score }
+    @players.sort( & descending_sort )
+
+    puts "#{@players[0].name} wins!"
+  end
+end

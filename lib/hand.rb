@@ -12,6 +12,7 @@ class Hand
     @cards << card
   end
 
+  #calculates the total score of a hand
   def total_score
     total = 0
     for card in @cards do
