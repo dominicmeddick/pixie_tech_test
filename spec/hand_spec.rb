@@ -9,11 +9,18 @@ describe Hand do
     expect(hand.cards).to include card
   end
 
-  # it 'calculates the score of the hand' do
-  #   hand = Hand.new
-  #   deck = Deck.new
-  #   5.times { hand.take_card(deck) }
-  #   expect(hand.total_score).to 
-  # end
+  it 'calculates the score of the hand' do
+    hand = Hand.new
+    card = Card.new(6, :clubs)
+    card2 = Card.new(2, :hearts)
+    card3 = Card.new(8, :spades)
+
+    hand.take_card(card)
+    hand.take_card(card2)
+    hand.take_card(card3)
+
+    expect(hand.total_score).to eq 16
+
+  end
 
 end
