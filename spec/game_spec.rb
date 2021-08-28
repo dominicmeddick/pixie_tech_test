@@ -11,4 +11,12 @@ describe Game do
     game.add_player(player2)
     expect(game.players).not_to be nil
   end
+
+  it 'decides how many cards to deal' do
+    game = Game.new
+    number = 5
+    expect(game.number_of_cards(number)).to eq 5
+  end
+
+
 end
