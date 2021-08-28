@@ -13,7 +13,11 @@ describe Card do
     expect(card.real_value).to eq 1
   end
 
-  it ' '
+  it ' converts the real value and suit of a card to a string' do
+    card = Card.new(:jack, :diamonds)
+    card_string = card.to_s
+    expect(card_string).to eq "the jack of diamonds"
+  end
 
 end
 

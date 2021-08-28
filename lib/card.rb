@@ -32,7 +32,7 @@ class Card
   end
 
   def to_s
-    "the #{real_value} of #{@suit}"
+    "the #{value} of #{@suit}"
   end
 
   def <=>(other)
