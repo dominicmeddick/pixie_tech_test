@@ -13,26 +13,64 @@ class Game
       @players << Player.new(name)
     else
       puts "You can't add anymore players"
+    end
   end
   
   def set_number_of_cards(number)
     @deck = Deck.new
     if @deck.length / @players.length >= 1
       @amount_of_cards = number
+      return true
     else
       puts "Not enough cards in the deck!"
+      return false
+    end
   end
 
-  def play
+  def deal_cards
     @deck.shuffle
 
     for player in @players do
-      @amount_of_cards.times { player.hand.take_card(deck.draw) }
+      @amount_of_cards.times { player.hand.take_card(@deck.draw) }
     end
-
+  end    
+  
+  def decide_winner
     descending_sort = ->(a,b) { b.hand.total_score  <=> a.hand.total_score }
     @players.sort( & descending_sort )
 
     puts "#{@players[0].name} wins!"
+  end
+
+  def get_players_input
+    loop do
+      puts "Add a new player: "
+      name = gets.chomp
+      add_player(name)
+      puts "Would you like to add a new player? y/n"
+      answer = gets.chomp.downcase
+      if answer.eql?("n")
+        break
+      end   
+    end
+  end
+
+  def get_card_number_input
+    loop do 
+      puts "Enter amount of cards per player"
+      card_amount = gets.chomp.to_i
+      is_valid = set_number_of_cards(card_amount)
+
+      if is_valid
+        break
+      end
+    end
+  end
+
+  def play
+    get_players_input
+    get_card_number_input
+    deal_cards
+    decide_winner
   end
 end
