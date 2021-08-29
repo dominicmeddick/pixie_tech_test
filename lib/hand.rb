@@ -8,6 +8,7 @@ class Hand
     @cards = []
   end
 
+  # puts a card into a players hand
   def take_card(card)
     @cards << card
   end

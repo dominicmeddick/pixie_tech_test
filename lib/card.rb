@@ -27,16 +27,17 @@ class Card
     @suit = suit
   end
 
+  #determines the numerical value of a card e.g it will see an ace as a 1
   def real_value
     REAL_VALUE[value]
   end
 
-  # this method is potentially not needed
+  # concerts the value and suits of a single card
   def to_s
     "the #{value} of #{@suit}"
   end
 
-  # this method is potentially not needed
+  # deteremines which card has a higher value
   def <=>(other)
     value <=> other.value
   end

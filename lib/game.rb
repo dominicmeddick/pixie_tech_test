@@ -8,6 +8,7 @@ class Game
     @players = []
   end
 
+  # adds players to a game
   def add_player(name)
     if name.nil? || name.strip.empty? then
       puts "Please enter a valid name"
@@ -21,6 +22,7 @@ class Game
     end
   end
   
+  # number of cards in a game
   def set_number_of_cards(number)
     @deck = Deck.new
     if number == 0
@@ -34,6 +36,7 @@ class Game
     end
   end
 
+  # deals cards into a players hand
   def deal_cards
     @deck.shuffle
 
@@ -41,7 +44,8 @@ class Game
       @amount_of_cards.times { player.hand.take_card(@deck.draw) }
     end
   end    
-  
+
+  # decides the winner of the game
   def decide_winner
     descending_sort = ->(a,b) { b.hand.total_score  <=> a.hand.total_score }
     @players.sort( & descending_sort )
@@ -49,6 +53,7 @@ class Game
     puts "#{@players[0].name} wins!"
   end
 
+  # gets the players names and therefore amount of players in the game from the user
   def get_players_input
     loop do
       puts "Add a new player: "
@@ -62,6 +67,7 @@ class Game
     end
   end
 
+  # gets the amount of cards in a game from the user
   def get_card_number_input
     loop do 
       puts "Enter amount of cards per player"
@@ -74,6 +80,7 @@ class Game
     end
   end
 
+  #runs the game
   def play
     get_players_input
     get_card_number_input

@@ -67,6 +67,18 @@
           null
         ]
       },
+      "/Users/dominicmeddick/Documents/Projects/pixie_tech_test/spec/features/enter_player_name_spec.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/dominicmeddick/Documents/Projects/pixie_tech_test/spec/game_spec.rb": {
         "lines": [
           1,
@@ -169,6 +181,6 @@
         ]
       }
     },
-    "timestamp": 1630239008
+    "timestamp": 1630253865
   }
 }

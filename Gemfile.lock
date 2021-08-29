@@ -90,6 +90,7 @@ PLATFORMS
 DEPENDENCIES
   capybara
   launchy
+  rack
   rspec
   rubocop (~> 1.16)
   simplecov (~> 0.21.2)
