@@ -35,6 +35,13 @@ describe Game do
     expect(game.add_player(" ")).to eq false
   end
 
+  it 'deals cards into the a single players hand' do 
+    game.add_player("Dom")
+    game.set_number_of_cards(52)
+    game.deal_cards
+    expect(game.players[0].hand.cards.length).to eq 52
+  end
+
 
 
 end
