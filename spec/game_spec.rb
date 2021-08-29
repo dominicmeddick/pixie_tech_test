@@ -11,7 +11,7 @@ describe Game do
     expect(game.players).not_to be nil
   end
 
-  it ' doesnt allow the user to add more than 52 players' do
+  it ' prevents the user from adding more than 52 players' do
     52.times { expect(game.add_player("Dom")).to eq true }
     expect(game.add_player("David")).to eq false
   end
@@ -20,5 +20,12 @@ describe Game do
     game.add_player("Dom")
     expect(game.set_number_of_cards(52)).to eq true
   end
+
+  it 'prevents the user from adding an an impossible combination of players and cards' do
+    game.add_player("Dom")
+    expect(game.set_number_of_cards(54)).to eq false
+  end
+
+
 
 end
