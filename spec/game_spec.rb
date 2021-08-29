@@ -31,6 +31,10 @@ describe Game do
     expect(game.set_number_of_cards(0)).to eq false
   end
 
+  it 'prevents the user from entering an invalid name' do 
+    expect(game.add_player(" ")).to eq false
+  end
+
 
 
 end

@@ -9,7 +9,10 @@ class Game
   end
 
   def add_player(name)
-    if @players.length < 52
+    if name.nil? || name.strip.empty? then
+      puts "Please enter a valid name"
+      return false
+    elsif @players.length < 52
       @players << Player.new(name)
       return true
     else
