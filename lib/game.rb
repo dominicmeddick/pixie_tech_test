@@ -20,7 +20,9 @@ class Game
   
   def set_number_of_cards(number)
     @deck = Deck.new
-    if @deck.length / @players.length >= number
+    if number == 0
+      return false
+    elsif @deck.length / @players.length >= number
       @amount_of_cards = number
       return true
     else

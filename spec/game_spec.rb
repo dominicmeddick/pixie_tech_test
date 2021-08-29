@@ -26,6 +26,11 @@ describe Game do
     expect(game.set_number_of_cards(54)).to eq false
   end
 
+  it 'prevents the game from being played with 0 cards' do
+    game.add_player("Dom")
+    expect(game.set_number_of_cards(0)).to eq false
+  end
+
 
 
 end
