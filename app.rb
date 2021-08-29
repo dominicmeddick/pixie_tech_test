@@ -13,6 +13,13 @@ class Poker < Sinatra::Base
     erb :index
   end
 
-  run! if app_file == $0
+  post '/select' do
+    redirect '/winner'
+  end
 
+  # get '/winner' do
+  #   erb: winner
+  # end
+
+  run! if app_file == $0
 end
