@@ -11,8 +11,10 @@ class Game
   def add_player(name)
     if @players.length < 52
       @players << Player.new(name)
+      return true
     else
       puts "You can't add anymore players"
+      return false
     end
   end
   
