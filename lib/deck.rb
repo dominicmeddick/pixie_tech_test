@@ -4,7 +4,7 @@ class Deck
 
   attr_accessor :SUITS
 
-  @@SUITS = [:spades, :hearts, :diamonds, :clubs]
+  @@SUITS = [:hearts, :spades, :diamonds, :clubs]
 
   def initialize
     @cards = @@SUITS.map { |suit| build(suit) }.flatten
