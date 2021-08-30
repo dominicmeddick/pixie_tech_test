@@ -1,6 +1,6 @@
 require 'spec_helper'
  
-feature 'player has to enter a name' do
+feature 'Incorrect user input' do
   scenario 'The user forgets to enter a name' do
     visit "/"
     fill_in "player_name", with: ""

@@ -67,10 +67,26 @@
           null
         ]
       },
-      "/Users/dominicmeddick/Documents/Projects/pixie_tech_test/spec/features/enter_player_name_spec.rb": {
+      "/Users/dominicmeddick/Documents/Projects/pixie_tech_test/spec/features/incorrect_name_input_spec.rb": {
         "lines": [
           1,
           null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/dominicmeddick/Documents/Projects/pixie_tech_test/spec/features/incorrect_number_input_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
           1,
           1,
           1,
@@ -184,6 +200,6 @@
         ]
       }
     },
-    "timestamp": 1630328495
+    "timestamp": 1630328802
   }
 }
