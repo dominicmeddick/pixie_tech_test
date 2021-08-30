@@ -7,7 +7,7 @@ describe Game do
 
   it 'adds players' do
     game.add_player("Dom")
-    game.add_player("David")
+    game.add_player("Charlie")
     expect(game.players).not_to be nil
   end
 
@@ -54,6 +54,19 @@ describe Game do
     for player in game.players do
       expect(player.hand.cards.length).to eq 5
     end
+  end
+
+  it 'returns the winner of the game' do 
+    game.add_player("Dom")
+    game.add_player("Charlie")
+    game.players[0].hand.take_card(Card.new(5, :hearts))
+    game.players[1].hand.take_card(Card.new(4, :hearts))
+    expect(game.decide_winner).to eq "Dom wins!"
+
+  end
+
+  it 'returns all the winners players in the case of a draw' do 
+    game
   end
 
 end
