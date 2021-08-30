@@ -14,27 +14,35 @@ class Poker < Sinatra::Base
   end
 
   post '/player_input' do
-    player = params[:player_name]
-    if session.key?(:players) == false
-      session[:players] = []
+    if session.key?(:game) == false
+      session[:game] = Game.new
     end
-    session[:players] << player
+    session[:game].add_player(params[:player_name])
     redirect '/'
   end
 
   post '/card_input' do
-    session[:card_number] = params[:card_number].to_i
-    redirect '/winner'
+    if session.key?(:game) == false
+      session[:log_message] = "You need to enter a player"
+      redirect '/'
+    end
+    card_number = params[:card_number].to_i
+    if card_number == 0
+      session[:log_message] = "You need to enter a number greater than 0"
+      redirect '/'
+    end
+    is_valid = session[:game].set_number_of_cards(card_number)
+    if is_valid
+      redirect '/winner'
+    else 
+      session[:log_message] = "You've entered an impossible combination of cards and players"
+      redirect '/'
+    end
   end
 
   get '/winner' do
-    game = Game.new
-    for player in session[:players]
-      game.add_player(player)
-    end
-    game.set_number_of_cards(session[:card_number])
-    game.deal_cards
-    @winner_name = game.decide_winner
+    session[:game].deal_cards
+    @winner_name = session[:game].decide_winner
 
     erb :winner
   end
