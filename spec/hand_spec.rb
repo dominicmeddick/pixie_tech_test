@@ -50,4 +50,39 @@ describe Hand do
     hand.take_card(Card.new(3, :clubs))
     expect(hand.total_score).to eq 65
   end
+
+  it 'adds 20 points for a three of a kind' do 
+    hand.take_card(Card.new(7, :hearts))
+    hand.take_card(Card.new(7, :diamonds))
+    hand.take_card(Card.new(7, :spades))
+    expect(hand.total_score).to eq 41
+  end
+
+  it 'adds 10 points for a pair' do 
+    hand.take_card(Card.new(7, :hearts))
+    hand.take_card(Card.new(7, :spades))
+    expect(hand.total_score).to eq 24
+  end
+
+  it 'adds all bonus points' do 
+    hand.take_card(Card.new(7, :hearts))
+    hand.take_card(Card.new(5, :hearts))
+    hand.take_card(Card.new(6, :spades))
+    hand.take_card(Card.new(4, :spades))
+    hand.take_card(Card.new(3, :clubs))
+    hand.take_card(Card.new(7, :diamonds))
+    hand.take_card(Card.new(7, :spades))
+    hand.take_card(Card.new(10, :hearts))
+    hand.take_card(Card.new(10, :diamonds))
+    hand.take_card(Card.new(13, :diamonds))
+    hand.take_card(Card.new(10, :spades))
+    hand.take_card(Card.new(13, :diamonds))
+
+    score = 0
+    for card in hand.cards
+      score += card.value
+    end
+
+    expect(hand.total_score).to eq (score + 40 + 20 + 10 + 10)
+  end
 end

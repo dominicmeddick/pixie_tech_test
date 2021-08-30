@@ -51,14 +51,33 @@ class Hand
       total += 40
       sorted_cards.slice!(straight[0]..straight[1])
     end
+
+    three_cards = get_num_of_a_kind(sorted_cards, 3)
+    for three in three_cards do
+      total += 20
+      sorted_cards.slice!(three[0]..three[1])
+    end
+
+    pairs = get_num_of_a_kind(sorted_cards, 2)
+    for pair in pairs do 
+      total += 10
+      sorted_cards.slice!(pair[0]..pair[1])
+    end
+
     return total
   end
 
   def get_straight(usable_cards)
+    indices = []
+
+    if (usable_cards.length == 0)
+      return indices
+    end
+    
     seq_count = 1
     prev = usable_cards[0].value
-    indices = []
-    for i in (1...@cards.length)
+    
+    for i in (1...usable_cards.length)
       curr = usable_cards[i].value
       if (curr - prev) == 1
         seq_count += 1
@@ -67,6 +86,32 @@ class Hand
         end
       else
         seq_count = 1
+      end
+      prev = curr
+    end
+
+    return indices
+  end
+
+  def get_num_of_a_kind(usable_cards, num)
+    indices = []
+
+    if (usable_cards.length == 0)
+      return indices
+    end
+
+    kind_count = 1
+    prev = usable_cards[0].value
+
+    for i in (1...usable_cards.length)
+      curr = usable_cards[i].value
+      if curr == prev 
+        kind_count += 1
+        if kind_count == num
+          indices << [i - (num - 1), i]
+        end
+      else
+        kind_count = 1
       end
       prev = curr
     end
