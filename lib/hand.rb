@@ -46,22 +46,31 @@ class Hand
     end 
     sorted_cards = @cards.sort
 
+    straights = get_straight(sorted_cards).reverse
+    for straight in straights do 
+      total += 40
+      sorted_cards.slice!(straight[0]..straight[1])
+    end
+    return total
+  end
+
+  def get_straight(usable_cards)
     seq_count = 1
-    prev = sorted_cards[0].value
+    prev = usable_cards[0].value
     indices = []
     for i in (1...@cards.length)
-      curr = sorted_cards[i].value
+      curr = usable_cards[i].value
       if (curr - prev) == 1
         seq_count += 1
         if seq_count == 5
           indices << [i - 4, i]
-          total += 40
         end
       else
         seq_count = 1
       end
       prev = curr
     end
-    return total
+
+    return indices
   end
 end
