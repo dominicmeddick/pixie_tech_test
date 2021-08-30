@@ -1,8 +1,11 @@
 require 'spec_helper'
  
-# feature 'Enter names' do
-#   scenario 'Players can enter their names' do
-#     get_players_input
-#     expect(page).to have_content 'Player_1 vs. Player_2'
-#   end
-# end
+feature 'player has to enter a name' do
+  scenario 'The user forgets to enter a name' do
+    visit "/"
+    fill_in "player_name", with: ""
+    fill_in "card_number", with: "5"
+    click_button "Play The Game"
+    expect(page).to have_content 'You need to enter a player'
+  end
+end
