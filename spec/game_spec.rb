@@ -18,22 +18,22 @@ describe Game do
 
   it 'decides how many cards to deal' do
     game.add_player("Dom")
-    expect(game.set_number_of_cards(52)).to eq true
+    expect(game.set_num_cards_per_player(52)).to eq true
   end
 
   it 'prevents the user from adding more than the number of cards in a deck' do
     game.add_player("Dom")
-    expect(game.set_number_of_cards(54)).to eq false
+    expect(game.set_num_cards_per_player(54)).to eq false
   end
 
   it 'prevents the user from adding an an impossible combination of players and cards' do
     4.times { game.add_player("Dom") }
-    expect(game.set_number_of_cards(20)).to eq false
+    expect(game.set_num_cards_per_player(20)).to eq false
   end
 
   it 'prevents the game from being played with 0 cards' do
     game.add_player("Dom")
-    expect(game.set_number_of_cards(0)).to eq false
+    expect(game.set_num_cards_per_player(0)).to eq false
   end
 
   it 'prevents the user from entering an invalid name' do 
@@ -42,14 +42,14 @@ describe Game do
 
   it 'deals cards into the a single players hand' do 
     game.add_player("Dom")
-    game.set_number_of_cards(52)
+    game.set_num_cards_per_player(52)
     game.deal_cards
     expect(game.players[0].hand.cards.length).to eq 52
   end
 
   it 'deals cards into multiple players hand' do 
     4.times { game.add_player("Dom") }
-    game.set_number_of_cards(5)
+    game.set_num_cards_per_player(5)
     game.deal_cards
     for player in game.players do
       expect(player.hand.cards.length).to eq 5

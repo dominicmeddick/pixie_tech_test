@@ -1,43 +1,45 @@
 require_relative 'card'
 
+# A collection of 52 cards that will be dealt out by the game
 class Deck
 
   attr_accessor :SUITS
 
   @@SUITS = [:hearts, :spades, :diamonds, :clubs]
 
+  # Initializes an ordered deck of 52 cards
   def initialize
     @cards = @@SUITS.map { |suit| build(suit) }.flatten
   end
 
-  # takes the deck built in the initialize and shuffles the deck
+  # Shuffles the cards in the deck
   def shuffle
     @cards.shuffle!
   end
 
-  # returns all the suits in a deck
+  # Returns suits in the order the deck ranks them
   def suits
     return @@SUITS
   end
 
-  # this takes the card from the top of a deck
+  # Removes the last card from the deck and returns it
   def draw
     @cards.pop
   end
 
-  # makes a copy of the cards array 
+  # Returns a shallow copy of the deck's cards array
   def shallow_copy_cards
     @cards.dup
   end
 
-  # gets the length of the cards array. This method is used for testing purposes
+  # Returns the number of cards in the deck
   def length
     @cards.length
   end
 
   private
 
-  # builds the deck
+  # Builds the deck
   def build(suit)
     (1..13).map { |value| Card.new(value, suit) }
   end

@@ -1,24 +1,28 @@
 require_relative 'card'
 
+# A collection of cards held by a player
 class Hand
 
   attr_reader :cards
 
+  # Initializes an empty hand
   def initialize
     @cards = []
   end
 
-  # puts a card into a players hand
+  # Adds the given card into the hand
   def take_card(card)
     @cards << card
   end
 
-
+  # Sorts the cards in the hand in descending order
   def sort_cards
     hearts = []
     spades = []
     clubs = []
     diamonds = []
+
+    # Sort each card into its corresponding suit array
     for card in @cards do
       case card.suit
       when :hearts 
@@ -31,14 +35,21 @@ class Hand
         diamonds << card
       end
     end
+
+    # Cards need to be in descending order, so sort
+    # then reverse the arrays 
     hearts.sort!.reverse!
     spades.sort!.reverse!
     clubs.sort!.reverse!
     diamonds.sort!.reverse!
+
+    # Combine all suit arrays in order
     @cards = hearts + spades + clubs + diamonds
   end
 
-  # calculates the total score of a hand
+  # Returns the total score of the hand by adding up
+  # the value of each card and then adding bonus points
+  # (40 for a straight, 20 for a three of a kind, 10 for a pair)
   def total_score
     total = 0
     for card in @cards do
@@ -67,6 +78,10 @@ class Hand
     return total
   end
 
+  private
+
+  # Returns an array containing the start and end indices
+  # of any straight found in the given usable_cards array
   def get_straight(usable_cards)
     indices = []
 
@@ -93,6 +108,8 @@ class Hand
     return indices
   end
 
+  # Returns an array containing the start and end indices
+  # of any num of a kind found in the given usable_cards array
   def get_num_of_a_kind(usable_cards, num)
     indices = []
 

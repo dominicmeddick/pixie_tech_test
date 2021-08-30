@@ -1,3 +1,4 @@
+# A single card
 class Card
 
   attr_reader :value, :suit
@@ -6,17 +7,18 @@ class Card
 
   @@card_names = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
 
+  # Initializes a card with the given value and suit
   def initialize(value, suit)
     @value = value
     @suit = suit
   end
 
-  # concerts the value and suits of a single card
+  # Converts the value and suit of the card into a string
   def to_s
     "#{@@card_names[value - 1]} of #{@suit.to_s.capitalize}"
   end
 
-  # deteremines which card has a higher value
+  # Compares cards by their value
   def <=>(other)
     value <=> other.value
   end
