@@ -50,8 +50,19 @@ class Game
     descending_sort = ->(a,b) { b.hand.total_score  <=> a.hand.total_score }
     @players.sort!( & descending_sort )
 
-    return "#{@players[0].name} wins!"
-  
+    first_score = @players[0].hand.total_score
+    ties = []
+    for player in @players do
+      if player.hand.total_score == first_score
+        ties << player
+      end
+    end
+    
+    winners = @players[0].name
+    for i in (1...ties.length)
+      winners += " and " + ties[i].name
+    end
+    return "#{winners} wins!"
   end
 
   # gets the players names and therefore amount of players in the game from the user

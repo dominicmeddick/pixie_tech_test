@@ -66,7 +66,11 @@ describe Game do
   end
 
   it 'returns all the winners players in the case of a draw' do 
-    game
+    game.add_player("Dom")
+    game.add_player("Charlie")
+    game.players[0].hand.take_card(Card.new(5, :hearts))
+    game.players[1].hand.take_card(Card.new(5, :hearts))
+    expect(game.decide_winner).to eq "Dom and Charlie wins!"
   end
 
 end
