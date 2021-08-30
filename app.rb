@@ -13,7 +13,7 @@ class Poker < Sinatra::Base
     erb :index
   end
 
-  post '/select' do
+  post '/user_input' do
     player_1 = Player.new(params[:player_1]).name
     player_2 = Player.new(params[:player_2]).name
     card_number = params[:card_number].to_i
@@ -21,13 +21,15 @@ class Poker < Sinatra::Base
     game.add_player(player_1)
     game.add_player(player_2)
     game.set_number_of_cards(card_number)
-    game.deal_cards
-    game.decide_winner
-
+    session[:game] = game
     redirect '/winner'
   end
 
   get '/winner' do
+    game = session[:game]
+    game.deal_cards
+    @winner_name = game.decide_winner
+
     erb :winner
   end
 

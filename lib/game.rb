@@ -48,9 +48,10 @@ class Game
   # decides the winner of the game
   def decide_winner
     descending_sort = ->(a,b) { b.hand.total_score  <=> a.hand.total_score }
-    @players.sort( & descending_sort )
+    @players.sort!( & descending_sort )
 
-    puts "#{@players[0].name} wins!"
+    return "#{@players[0].name} wins!"
+  
   end
 
   # gets the players names and therefore amount of players in the game from the user
