@@ -7,6 +7,8 @@
   - Card
   - Hand
 
+![Alt text](/images/Planning.png)
+
 ## Feature test steps 
 
 1. Single player game winner

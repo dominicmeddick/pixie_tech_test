@@ -32,6 +32,8 @@ run irb in your terminal
 game = Game.new
 game.play
 
+![Alt text](/images/irb.png)
+
 Navigate to http://localhost:4567/ in your browser
 
 ## Testing
