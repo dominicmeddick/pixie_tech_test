@@ -41,4 +41,13 @@ describe Hand do
 
     expect(hand.cards).to eq controller_hand
   end
+
+  it 'adds 40 points for a straight' do 
+    hand.take_card(Card.new(7, :hearts))
+    hand.take_card(Card.new(5, :hearts))
+    hand.take_card(Card.new(6, :spades))
+    hand.take_card(Card.new(4, :spades))
+    hand.take_card(Card.new(3, :clubs))
+    expect(hand.total_score).to eq 65
+  end
 end

@@ -13,6 +13,7 @@ class Hand
     @cards << card
   end
 
+
   def sort_cards
     hearts = []
     spades = []
@@ -37,12 +38,30 @@ class Hand
     @cards = hearts + spades + clubs + diamonds
   end
 
-  #calculates the total score of a hand
+  # calculates the total score of a hand
   def total_score
     total = 0
     for card in @cards do
       total += card.value
     end 
+    sorted_cards = @cards.sort
+
+    seq_count = 1
+    prev = sorted_cards[0].value
+    indices = []
+    for i in (1...@cards.length)
+      curr = sorted_cards[i].value
+      if (curr - prev) == 1
+        seq_count += 1
+        if seq_count == 5
+          indices << [i - 4, i]
+          total += 40
+        end
+      else
+        seq_count = 1
+      end
+      prev = curr
+    end
     return total
   end
 end

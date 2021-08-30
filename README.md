@@ -55,6 +55,21 @@ The website works accross multiple browers and devices
 3. When a user wins a game the results gets pushed to the database
 4. Users can check the games they've played and high scores from their profile page on the website. 
 
+## Tie-breaker: use card suit to determine an overall winner
+
+1. Assign each suit a value
+2. Get the score and rank players normally
+3. If there is a tie call the tiebreaker score method
+4. In the tiebreaker method count the value of the suits in the players hands.
+5. Rank players
+6. Declare winner
+
+## Front end
+
+1. I would add more stylistic flair!
+2. Unfortunately I didn't have time to do any CSS.
+3. I would have liked to display some of the backend features I wrote into the frontend of the game. 
+
 ### Technologies Used
 
 I used the following technologies:
