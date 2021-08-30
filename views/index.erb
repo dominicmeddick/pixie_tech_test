@@ -12,20 +12,24 @@
     <div class="container">
       <h1>Poker</h1>
 
-      <h2>Player 1 name: </h2>
+      <h2>Add a player: </h2>
 
-      <form action="/user_input" method="post">
-        <input type="text" class="input" placeholder="Enter a name" name="player_1" >
+      <form action="/player_input" method="post">
+        <input type="text" class="input" placeholder="Enter a name" name="player_name" >
 
-        <h2>Player 2 name:<h2>
-
-        <input type="text" class="input" placeholder="Enter a name" name="player_2" >
-
-        <h2>Enter the amount of cards per player: </h2>
-        <input type="number" class="input" placeholder="Enter a number" name="card_number" >
         <p>
           <input id="SubmitButton" class="submit" type="submit" value="Submit">
         </p>
+      </form>
+
+      <form action="/card_input" method="post">
+        <h2>Enter the amount of cards per player: </h2>
+        <input type="number" class="input" placeholder="Enter a number" name="card_number" >
+
+        <p>
+          <input id="SubmitButton" class="submit" type="submit" value="Play The Game">
+        </p>
+
       </form>
     </div>
   </body>
