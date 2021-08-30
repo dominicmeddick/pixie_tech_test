@@ -28,7 +28,6 @@ ruby app.rb
 
 To play the game in irb:
 
-```
 run irb in your terminal
 game = Game.new
 game.play
