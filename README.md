@@ -28,9 +28,9 @@ ruby app.rb
 
 To play the game in irb:
 
-run irb in your terminal
-game = Game.new
-game.play
+1. run irb in your terminal
+2. game = Game.new
+3. game.play
 
 ![Alt text](/images/irb.png)
 
