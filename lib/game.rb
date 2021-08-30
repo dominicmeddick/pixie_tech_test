@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'deck'
 
 class Game
 
@@ -43,7 +44,7 @@ class Game
     for player in @players do
       @amount_of_cards.times { player.hand.take_card(@deck.draw) }
     end
-  end    
+  end
 
   # decides the winner of the game
   def decide_winner
@@ -97,6 +98,9 @@ class Game
     get_players_input
     get_card_number_input
     deal_cards
+    for player in @players
+      player.hand.sort_cards
+    end
     decide_winner
   end
 end

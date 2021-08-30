@@ -1,4 +1,4 @@
-require_relative 'deck'
+require_relative 'card'
 
 class Hand
 
@@ -11,6 +11,30 @@ class Hand
   # puts a card into a players hand
   def take_card(card)
     @cards << card
+  end
+
+  def sort_cards
+    hearts = []
+    spades = []
+    clubs = []
+    diamonds = []
+    for card in @cards do
+      case card.suit
+      when :hearts 
+        hearts << card
+      when :spades 
+        spades << card
+      when :clubs 
+        clubs << card
+      when :diamonds
+        diamonds << card
+      end
+    end
+    hearts.sort!.reverse!
+    spades.sort!.reverse!
+    clubs.sort!.reverse!
+    diamonds.sort!.reverse!
+    @cards = hearts + spades + clubs + diamonds
   end
 
   #calculates the total score of a hand

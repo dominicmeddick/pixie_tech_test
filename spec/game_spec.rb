@@ -72,5 +72,4 @@ describe Game do
     game.players[1].hand.take_card(Card.new(5, :hearts))
     expect(game.decide_winner).to eq "Dom and Charlie wins!"
   end
-
 end
