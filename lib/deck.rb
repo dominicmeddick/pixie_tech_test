@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 require_relative 'card'
 
 # A collection of 52 cards that will be dealt out by the game
 class Deck
-
   attr_accessor :SUITS
 
-  @@SUITS = [:hearts, :spades, :diamonds, :clubs]
+  @@SUITS = %i[hearts spades diamonds clubs]
 
   # Initializes an ordered deck of 52 cards
   def initialize
@@ -19,7 +20,7 @@ class Deck
 
   # Returns suits in the order the deck ranks them
   def suits
-    return @@SUITS
+    @@SUITS
   end
 
   # Removes the last card from the deck and returns it

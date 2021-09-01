@@ -2,13 +2,13 @@
 
 source 'https://rubygems.org'
 
-gem 'sinatra'
-gem 'sinatra-contrib'
 gem 'capybara'
 gem 'launchy'
-gem 'webrick'
 gem 'rack'
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'webrick'
 
+gem 'rspec'
 gem 'rubocop', '~> 1.16'
 gem 'simplecov', '~> 0.21.2'
-gem 'rspec'
