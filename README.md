@@ -1,12 +1,13 @@
 # README
 
 # World's Simplest Poker
+[World's Simplest Poker](https://pixie-tech-test.herokuapp.com/)
 
 # Challenge
 
 A very simple card game, played between two or more players where immediately after the cards are dealt, the player with the highest hand wins.
 
-## Clone this repo
+# Clone this repo
 
 To install dependencies:
 
@@ -42,20 +43,17 @@ Navigate to http://localhost:4567/ in your browser
 1. Test coverage is 100% and is measured with simplecov
 2. Testing includes both feature and unit tests
 
-## Heroku (click the link)
-[World's Simplest Poker](https://pixie-tech-test.herokuapp.com/)
-
 The website works accross multiple browers and devices 
 
 # If I had more time I would have
 
-## Creating an account to keep track of games you've played and high scores
+# Creating an account to keep track of games you've played and high scores
 1. I would incorporate a database into my application e.g postgres. 
 2. Create a sign up/sign in page
 3. When a user wins a game the results gets pushed to the database
 4. Users can check the games they've played and high scores from their profile page on the website. 
 
-## Tie-breaker: use card suit to determine an overall winner
+# Tie-breaker: use card suit to determine an overall winner
 
 1. Assign each suit a value
 2. Get the score and rank players normally
@@ -64,13 +62,13 @@ The website works accross multiple browers and devices
 5. Rank players
 6. Declare winner
 
-## Front end
+# Front end
 
 1. I would add more stylistic flair!
 2. Unfortunately I didn't have time to do any CSS.
 3. I would have liked to display some of the backend features I wrote into the frontend of the game. 
 
-### Technologies Used
+# Technologies Used
 
 I used the following technologies:
 
