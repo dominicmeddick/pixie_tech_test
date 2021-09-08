@@ -93,8 +93,10 @@ class Hand
 
     (1...usable_cards.length).each do |i|
       curr = usable_cards[i].value
+      # if sequential
       if (curr - prev) == 1
         seq_count += 1
+        # start and end indices of sequence
         indices << [i - 4, i] if seq_count == 5
       else
         seq_count = 1
