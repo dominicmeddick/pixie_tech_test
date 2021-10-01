@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
 # A single card
 class Card
-
   attr_reader :value, :suit
 
   include Comparable
 
-  @@card_names = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
+  @@card_names = %w[Ace 2 3 4 5 6 7 8 9 10 Jack Queen King]
 
   # Initializes a card with the given value and suit
   def initialize(value, suit)
@@ -14,7 +15,7 @@ class Card
   end
 
   # Converts the value and suit of the card into a string
-  def to_s
+  def to_string
     "#{@@card_names[value - 1]} of #{@suit.to_s.capitalize}"
   end
 
@@ -22,5 +23,4 @@ class Card
   def <=>(other)
     value <=> other.value
   end
-
 end

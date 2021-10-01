@@ -1,14 +1,15 @@
+# frozen_string_literal: true
+
 require 'deck'
 
 describe Deck do
-
   it 'contains 52 cards' do
     deck = Deck.new
     cards = deck.shallow_copy_cards
 
-    card_index = 0 
-    for x in deck.suits do
-      for y in (1..13)
+    card_index = 0
+    deck.suits.each do |x|
+      (1..13).each do |y|
         expect(cards[card_index].value).to eq y
         expect(cards[card_index].suit).to eq x
         card_index += 1
@@ -28,7 +29,6 @@ describe Deck do
     deck = Deck.new
     deck_length = deck.length
     expect(deck.draw).not_to equal nil
-    expect(deck.length).to eq (deck_length -1)
+    expect(deck.length).to eq(deck_length - 1)
   end
-
 end

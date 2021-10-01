@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'hand'
 
 describe Hand do
-
   let(:hand) { Hand.new }
 
   it 'puts a card into a players hand' do
@@ -34,7 +35,7 @@ describe Hand do
     player_hand << Card.new(4, :diamonds)
     controller_hand = player_hand.dup
     player_hand.shuffle!
-    for card in player_hand do 
+    player_hand.each do |card|
       hand.take_card(card)
     end
     hand.sort_cards
@@ -42,7 +43,7 @@ describe Hand do
     expect(hand.cards).to eq controller_hand
   end
 
-  it 'adds 40 points for a straight' do 
+  it 'adds 40 points for a straight' do
     hand.take_card(Card.new(7, :hearts))
     hand.take_card(Card.new(5, :hearts))
     hand.take_card(Card.new(6, :spades))
@@ -51,20 +52,20 @@ describe Hand do
     expect(hand.total_score).to eq 65
   end
 
-  it 'adds 20 points for a three of a kind' do 
+  it 'adds 20 points for a three of a kind' do
     hand.take_card(Card.new(7, :hearts))
     hand.take_card(Card.new(7, :diamonds))
     hand.take_card(Card.new(7, :spades))
     expect(hand.total_score).to eq 41
   end
 
-  it 'adds 10 points for a pair' do 
+  it 'adds 10 points for a pair' do
     hand.take_card(Card.new(7, :hearts))
     hand.take_card(Card.new(7, :spades))
     expect(hand.total_score).to eq 24
   end
 
-  it 'adds all bonus points' do 
+  it 'adds all bonus points' do
     hand.take_card(Card.new(7, :hearts))
     hand.take_card(Card.new(5, :hearts))
     hand.take_card(Card.new(6, :spades))
@@ -79,10 +80,10 @@ describe Hand do
     hand.take_card(Card.new(13, :diamonds))
 
     score = 0
-    for card in hand.cards
+    hand.cards.each do |card|
       score += card.value
     end
 
-    expect(hand.total_score).to eq (score + 40 + 20 + 10 + 10)
+    expect(hand.total_score).to eq(score + 40 + 20 + 10 + 10)
   end
 end

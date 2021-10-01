@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require_relative 'card'
 
 # A collection of cards held by a player
 class Hand
-
   attr_reader :cards
 
   # Initializes an empty hand
@@ -23,13 +24,13 @@ class Hand
     diamonds = []
 
     # Sort each card into its corresponding suit array
-    for card in @cards do
+    @cards.each do |card|
       case card.suit
-      when :hearts 
+      when :hearts
         hearts << card
-      when :spades 
+      when :spades
         spades << card
-      when :clubs 
+      when :clubs
         clubs << card
       when :diamonds
         diamonds << card
@@ -37,7 +38,7 @@ class Hand
     end
 
     # Cards need to be in descending order, so sort
-    # then reverse the arrays 
+    # then reverse the arrays
     hearts.sort!.reverse!
     spades.sort!.reverse!
     clubs.sort!.reverse!
@@ -47,35 +48,42 @@ class Hand
     @cards = hearts + spades + clubs + diamonds
   end
 
+  def hand_to_string
+    @cards.map do |card|
+      "#{card.to_string}"
+    end.join(', ')
+  end
+
   # Returns the total score of the hand by adding up
   # the value of each card and then adding bonus points
   # (40 for a straight, 20 for a three of a kind, 10 for a pair)
   def total_score
     total = 0
-    for card in @cards do
+    @cards.each do |card|
       total += card.value
-    end 
+    end
+
     sorted_cards = @cards.sort
 
     straights = get_straight(sorted_cards).reverse
-    for straight in straights do 
+    straights.each do |straight|
       total += 40
       sorted_cards.slice!(straight[0]..straight[1])
     end
 
-    three_cards = get_num_of_a_kind(sorted_cards, 3)
-    for three in three_cards do
+    three_cards = get_number_of_a_kind(sorted_cards, 3)
+    three_cards.each do |three|
       total += 20
       sorted_cards.slice!(three[0]..three[1])
     end
 
-    pairs = get_num_of_a_kind(sorted_cards, 2)
-    for pair in pairs do 
+    pairs = get_number_of_a_kind(sorted_cards, 2)
+    pairs.each do |pair|
       total += 10
       sorted_cards.slice!(pair[0]..pair[1])
     end
 
-    return total
+    total
   end
 
   private
@@ -85,54 +93,48 @@ class Hand
   def get_straight(usable_cards)
     indices = []
 
-    if (usable_cards.length == 0)
-      return indices
-    end
-    
+    return indices if usable_cards.length.zero?
+
     seq_count = 1
     prev = usable_cards[0].value
-    
-    for i in (1...usable_cards.length)
-      curr = usable_cards[i].value
+
+    (1...usable_cards.length).each do |index|
+      curr = usable_cards[index].value
+      # if sequential
       if (curr - prev) == 1
         seq_count += 1
-        if seq_count == 5
-          indices << [i - 4, i]
-        end
+        # start and end indices of sequence
+        indices << [index - 4, index] if seq_count == 5
       else
         seq_count = 1
       end
       prev = curr
     end
 
-    return indices
+    indices
   end
 
   # Returns an array containing the start and end indices
   # of any num of a kind found in the given usable_cards array
-  def get_num_of_a_kind(usable_cards, num)
+  def get_number_of_a_kind(usable_cards, num)
     indices = []
 
-    if (usable_cards.length == 0)
-      return indices
-    end
+    return indices if usable_cards.length.zero?
 
     kind_count = 1
     prev = usable_cards[0].value
 
-    for i in (1...usable_cards.length)
+    (1...usable_cards.length).each do |i|
       curr = usable_cards[i].value
-      if curr == prev 
+      if curr == prev
         kind_count += 1
-        if kind_count == num
-          indices << [i - (num - 1), i]
-        end
+        indices << [i - (num - 1), i] if kind_count == num
       else
         kind_count = 1
       end
       prev = curr
     end
 
-    return indices
+    indices
   end
 end

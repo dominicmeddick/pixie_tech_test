@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 require_relative 'player'
 require_relative 'deck'
 
-# 
 class Game
-
   attr_accessor :players
 
   # Initializes a game with no players
@@ -13,31 +13,31 @@ class Game
 
   # Adds a player with the given name to the game
   def add_player(name)
-    if name.nil? || name.strip.empty? then
-      puts "Please enter a valid name"
-      return false
+    if name.nil? || name.strip.empty?
+      puts 'Please enter a valid name'
+      false
     elsif @players.length < 52
       # There are only 52 cards in the deck, so there
       # cannot be more than 52 players
       @players << Player.new(name)
-      return true
+      true
     else
       puts "You can't add anymore players"
-      return false
+      false
     end
   end
-  
+
   # Sets the number of cards each player gets dealt
   def set_num_cards_per_player(number)
     @deck = Deck.new
-    if number == 0
-      return false
+    if number.zero?
+      false
     elsif @deck.length / @players.length >= number
       @amount_of_cards = number
-      return true
+      true
     else
-      puts "Not enough cards in the deck!"
-      return false
+      puts 'Not enough cards in the deck!'
+      false
     end
   end
 
@@ -45,67 +45,68 @@ class Game
   def deal_cards
     @deck.shuffle
 
-    for player in @players do
+    @players.each do |player|
       @amount_of_cards.times { player.hand.take_card(@deck.draw) }
+    end
+  end
+
+  def player_cards
+    @players.map do |player|
+      puts "#{player.name} hand is #{player.hand.hand_to_string}"
     end
   end
 
   # Decides the winner of the game based on the score of each player's
   # hand and returns a string declaring the winner (or winners, in the case of a draw)
   def decide_winner
-    descending_sort = ->(a,b) { b.hand.total_score  <=> a.hand.total_score }
-    @players.sort!( & descending_sort )
+    descending_sort = ->(a, b) { b.hand.total_score <=> a.hand.total_score }
+    @players.sort!(& descending_sort)
 
     first_score = @players[0].hand.total_score
     ties = []
-    for player in @players do
-      if player.hand.total_score == first_score
-        ties << player
-      end
+    @players.each do |player|
+      ties << player if player.hand.total_score == first_score
     end
-    
+
     winners = @players[0].name
-    for i in (1...ties.length)
-      winners += " and " + ties[i].name
+    num = 0
+    (1...ties.length).each do |i|
+      winners += " and #{ties[i].name}"
+      num += 1
     end
-    return "#{winners} wins!"
+    "#{winners} wins!"
   end
 
   # Takes input to add players to a game.
   # Used if game is run in console.
   def get_players_input
     loop do
-      puts "Add a new player: "
+      puts 'Add a new player: '
       name = gets.chomp
       add_player(name)
-      puts "Would you like to add a new player? y/n"
+      puts 'Would you like to add a new player? y/n'
       answer = gets.chomp.downcase
-      if answer.eql?("n")
-        break
-      end   
+      break if answer.eql?('n')
     end
   end
 
   # Takes input to set the number of cards dealt.
   # Used if game is run in console.
   def get_card_number_input
-    loop do 
-      puts "Enter amount of cards per player"
+    loop do
+      puts 'Enter amount of cards per player'
       card_amount = gets.chomp.to_i
       is_valid = set_num_cards_per_player(card_amount)
 
-      if is_valid
-        break
-      end
+      break if is_valid
     end
   end
 
   def sort_players_cards
-    for player in @players
+    @players.each do |player|
       player.hand.sort_cards
     end
   end
-
 
   # Runs the game
   def play
@@ -113,6 +114,7 @@ class Game
     get_card_number_input
     deal_cards
     sort_players_cards
+    player_cards
     decide_winner
   end
 end
