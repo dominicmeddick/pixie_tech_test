@@ -6,13 +6,13 @@ require 'player'
 describe Game do
   let(:game) { Game.new }
 
-  it 'adds players' do
+  it 'adds the provided players' do
     game.add_player('Dom')
     game.add_player('Charlie')
     expect(game.players).not_to be nil
   end
 
-  it ' prevents the user from adding more than 52 players' do
+  it 'prevents the user from adding more than 52 players' do
     52.times { expect(game.add_player('Dom')).to eq true }
     expect(game.add_player('David')).to eq false
   end
@@ -37,7 +37,7 @@ describe Game do
     expect(game.set_num_cards_per_player(0)).to eq false
   end
 
-  it 'prevents the user from entering an invalid name' do
+  it 'does not allow invalid user name' do
     expect(game.add_player(' ')).to eq false
   end
 

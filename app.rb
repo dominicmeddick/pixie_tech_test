@@ -53,10 +53,15 @@ class Poker < Sinatra::Base
   end
 
   get '/winner' do
-    game = session[:game]
-    game.deal_cards
-    game.sort_players_cards
-    @winner_name = game.decide_winner
+    if session[:game] == nil
+      redirect '/'
+    else
+      game = session[:game]
+      game.deal_cards
+      game.sort_players_cards
+      @winner_name = game.decide_winner
+      session[:game] = nil
+    end
 
     erb :winner
   end

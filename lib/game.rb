@@ -50,6 +50,12 @@ class Game
     end
   end
 
+  def player_cards
+    @players.map do |player|
+      puts "#{player.name} hand is #{player.hand.hand_to_string}"
+    end
+  end
+
   # Decides the winner of the game based on the score of each player's
   # hand and returns a string declaring the winner (or winners, in the case of a draw)
   def decide_winner
@@ -63,8 +69,10 @@ class Game
     end
 
     winners = @players[0].name
+    num = 0
     (1...ties.length).each do |i|
       winners += " and #{ties[i].name}"
+      num += 1
     end
     "#{winners} wins!"
   end
@@ -106,6 +114,7 @@ class Game
     get_card_number_input
     deal_cards
     sort_players_cards
+    player_cards
     decide_winner
   end
 end

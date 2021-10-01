@@ -15,7 +15,7 @@ class Card
   end
 
   # Converts the value and suit of the card into a string
-  def to_s
+  def to_string
     "#{@@card_names[value - 1]} of #{@suit.to_s.capitalize}"
   end
 

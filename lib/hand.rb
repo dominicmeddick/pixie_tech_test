@@ -48,6 +48,12 @@ class Hand
     @cards = hearts + spades + clubs + diamonds
   end
 
+  def hand_to_string
+    @cards.map do |card|
+      "#{card.to_string}"
+    end.join(', ')
+  end
+
   # Returns the total score of the hand by adding up
   # the value of each card and then adding bonus points
   # (40 for a straight, 20 for a three of a kind, 10 for a pair)
@@ -56,6 +62,7 @@ class Hand
     @cards.each do |card|
       total += card.value
     end
+
     sorted_cards = @cards.sort
 
     straights = get_straight(sorted_cards).reverse
@@ -64,13 +71,13 @@ class Hand
       sorted_cards.slice!(straight[0]..straight[1])
     end
 
-    three_cards = get_num_of_a_kind(sorted_cards, 3)
+    three_cards = get_number_of_a_kind(sorted_cards, 3)
     three_cards.each do |three|
       total += 20
       sorted_cards.slice!(three[0]..three[1])
     end
 
-    pairs = get_num_of_a_kind(sorted_cards, 2)
+    pairs = get_number_of_a_kind(sorted_cards, 2)
     pairs.each do |pair|
       total += 10
       sorted_cards.slice!(pair[0]..pair[1])
@@ -91,13 +98,13 @@ class Hand
     seq_count = 1
     prev = usable_cards[0].value
 
-    (1...usable_cards.length).each do |i|
-      curr = usable_cards[i].value
+    (1...usable_cards.length).each do |index|
+      curr = usable_cards[index].value
       # if sequential
       if (curr - prev) == 1
         seq_count += 1
         # start and end indices of sequence
-        indices << [i - 4, i] if seq_count == 5
+        indices << [index - 4, index] if seq_count == 5
       else
         seq_count = 1
       end
@@ -109,7 +116,7 @@ class Hand
 
   # Returns an array containing the start and end indices
   # of any num of a kind found in the given usable_cards array
-  def get_num_of_a_kind(usable_cards, num)
+  def get_number_of_a_kind(usable_cards, num)
     indices = []
 
     return indices if usable_cards.length.zero?
